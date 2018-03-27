@@ -18,16 +18,23 @@ app.post('/todos', (req, res) => {
     }, (e) => {
         res.status(400).send(e);
     });
-    // } else {
-    //     req.body.forEach((post) => {
-    //         var todo = new Todo(post);
-    //         todo.save().then((doc) => {
-    //             res.send(doc);
-    //         }, (e) => {
-    //             res.status(400).send(e);
-    //         });
-    //     });
-    // }
+    /* } else {
+        req.body.forEach((post) => {
+            var todo = new Todo(post);
+            todo.save().then((doc) => {
+                res.send(doc);
+            }, (e) => {
+                res.status(400).send(e);
+            });
+        });
+    } */
+
+    /* async.eachSeries(people, function (person, asyncdone) {
+        person.save(asyncdone);
+    }, function (err) {
+        if (err) return console.log(err);
+        done(); // or `done(err)` if you want the pass the error up
+    }); */
 });
 
 app.get('/todos', (req, res) => {
