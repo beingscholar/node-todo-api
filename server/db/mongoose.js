@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
-const dbName = 'TodoApp';
-// const Url = 'mongodb://tododb:tododb123@ds237855.mlab.com:37855/';
-const Url = 'mongodb://localhost:27017/'
+const Url = process.env.MONGODB_URI;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(Url + dbName);
+// mongoose.connect(Url);
+mongoose.connect(Url + MONGODB_NAME);
 
 module.exports = { mongoose };
 
