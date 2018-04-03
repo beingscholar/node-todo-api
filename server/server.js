@@ -9,6 +9,7 @@ const { ObjectID } = require('mongodb');
 var { mongoose } = require('./db/mongoose');
 var { Todo } = require('./models/todo');
 var { User } = require('./models/user');
+var { authenticate } = require('./middleware/authenticate');
 
 var app = express();
 
@@ -123,6 +124,17 @@ app.post('/users', (req, res) => {
     }).then((token) => {
         res.header('X-Auth', token).send(user);
     }).catch((e) => res.status(400).send(e));
+});
+
+app.get('/user/me', authenticate, (req, res) => {
+    res.send(req.user);
+    /* var token = req.header('X-Auth');
+
+    User.findByToken(token).then((user) => {
+        if (!user) return Promise.reject();
+
+        res.send(user);
+    }).catch((e) => res.status(401).send()); */
 });
 
 
