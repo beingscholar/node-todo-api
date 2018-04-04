@@ -122,13 +122,13 @@ app.post('/users', (req, res) => {
         return user.generateAuthToken();
         // res.send(user);
     }).then((token) => {
-        res.header('X-Auth', token).send(user);
+        res.header('x-auth', token).send(user);
     }).catch((e) => res.status(400).send(e));
 });
 
-app.get('/user/me', authenticate, (req, res) => {
+app.get('/users/me', authenticate, (req, res) => {
     res.send(req.user);
-    /* var token = req.header('X-Auth');
+    /* var token = req.header('x-auth');
 
     User.findByToken(token).then((user) => {
         if (!user) return Promise.reject();
